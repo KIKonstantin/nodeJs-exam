@@ -1,0 +1,48 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mind Blog</title>
+    <link rel="stylesheet" href="../../static/css/styles.css" />
+  </head>
+
+  <body>
+
+    <div class="navigation">
+      <nav>
+        <img src="../../static/images/logo.jpg" />
+        <ul>
+          <!-- Guest users and Logged users -->
+
+          <li><a href="/">Home</a></li>
+          <li><a href="/catalog">Blogs</a></li>
+          {{#if user}}
+            <!--For loggin users-->
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/create">Create Blog</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+          {{else}}
+            <!--For guest users-->
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/register">Register</a></li>
+          {{/if}}
+        </ul>
+      </nav>
+    </div>
+    {{#if errors}}
+      <section class="errorContainer">
+        {{#each errors}}
+          <p>{{this}}</p>
+        {{/each}}
+      </section>
+    {{/if}}
+    <main>
+      {{{body}}}
+    </main>
+
+    <footer>Back-End 2022</footer>
+  </body>
+
+</html>
